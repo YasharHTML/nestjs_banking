@@ -1,73 +1,65 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+NestJS Banking App
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+NestJS Banking is a monorepo microservices application designed for handling banking operations. It utilizes the NestJS framework and follows a microservices architecture pattern. The app utilizes NATS as a message broker, Firebase for authentication, and Stripe for banking operations. It is designed to be deployed on Kubernetes (K8s) and includes Dockerfiles for containerization.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Features
 
-## Description
+Microservices Architecture: The app is structured into multiple microservices to ensure modularity, scalability, and maintainability.
+Message Broker (NATS): NATS is used as the messaging system to enable communication between the microservices.
+Firebase Authentication: User authentication is handled through Firebase, providing a secure and reliable authentication mechanism.
+Stripe Issuing Integration: Stripe is integrated into the app to handle banking operations and transactions securely.
+Containerization (Docker): The app is containerized using Docker, making it easy to deploy and manage on Kubernetes or any container orchestration platform.
+Requirements
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Node.js (v14 or later)
+Docker
+Kubernetes (K8s)
+Installation and Setup
 
-## Installation
-
-```bash
-$ yarn install
+Clone the repository:
 ```
-
-## Running the app
-
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+$ git clone <repository_url>
 ```
-
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+Install dependencies for each microservice:
 ```
+$ cd nestjs_banking
+$ cd microservice_name
+$ npm install
+```
+Set up environment variables:
+You need to set up environment variables for each microservice to configure Firebase and Stripe credentials. Refer to the respective microservice's README.md file for specific instructions on configuring environment variables.
 
-## Support
+Build Docker images:
+```
+$ docker build -t <image_name> .
+```
+Deploying on Kubernetes
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To deploy the app on Kubernetes, follow these steps:
 
-## Stay in touch
+Apply the Kubernetes manifests:
+```
+$ kubectl apply -f <path_to_manifests>
+```
+Make sure to update the manifests according to your specific requirements, such as image names and environment variables.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Monitor the deployment:
+```
+$ kubectl get pods
+```
+Ensure that all pods are running and have the desired state.
 
-## License
+Access the app:
+The app will be accessible based on the Kubernetes service or ingress configuration.
 
-Nest is [MIT licensed](LICENSE).
+License
+
+This project is licensed under the MIT License.
+
+Feel free to modify and distribute this project as per the license terms.
+
+For more information, see the LICENSE file.
+
+Additional Information
+
+Please refer to the individual microservice README.md files for more detailed information on each microservice's functionality, API endpoints, and specific setup instructions
